@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TestService } from '../service/test.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  
+  public msj : string = "";
 
-  constructor() {}
+  datos={
+    nro1: null,
+    nro2: null
+  }
 
+  constructor(private service: TestService) {}
+
+  doSumar(){
+    this.msj ="La suma es: "+
+
+      this.service.suma(
+        Number(this.datos.nro1),
+        Number(this.datos.nro2)
+      );
+    return this.msj;
+  }
 }
